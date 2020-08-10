@@ -1,31 +1,35 @@
-import datetime
-import random
-import sys
-import math
+import time
+import threading
 
-from typing import List, Generator, NewType
+def my_func1(name):
+    print(f"thread_2 started with {name}\n")
+    time.sleep(10)
+    print("thread_2 ended\n")
 
-repeat: int = 200
 
-def convert_size(size_bytes: int) -> str:
-   if size_bytes == 0:
-       return "0B"
-   size_name = ("B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB")
-   i = int(math.floor(math.log(size_bytes, 1024)))
-   p = math.pow(1024, i)
-   s = round(size_bytes / p, 2)
-   return "%s %s" % (s, size_name[i])
+def my_func2(name):
+    print(f"thread_3 started with {name}\n")
+    time.sleep(10)
+    print("thread_3 ended\n")
 
-start_time = datetime.datetime.now()
 
-random_val = (random.randrange(1, 100) for i in range(repeat))
-list_size = sys.getsizeof(random_val)
-print('generator validation:')
-for i in range(repeat):
-   print(next(random_val))
+def my_func3(name):
+    print(f"thread_4 started with {name}\n")
+    time.sleep(10)
+    print("thread_4 ended\n")
 
-end_time = datetime.datetime.now()
-
-total_time = end_time - start_time
-print('it took %s to complete the script' % (total_time))
-print('list consumes %s of memory' % (convert_size(list_size)))
+if __name__ == "__main__":
+    print("thread_1 started\n")
+    # daemon=True to run thread in background will be killed when main thread is finished if work is not completed
+    # t = threading.Thread(target=my_func, args=["my_arg"], daemon=True)
+    t1 = threading.Thread(target=my_func1, args=["my_arg1"])
+    t1.start()
+    t2 = threading.Thread(target=my_func2, args=["my_arg2"])
+    t2.start()
+    t3 = threading.Thread(target=my_func3, args=["my_arg3"])
+    t3.start()
+    # joins main thread with second thread and will wait until second thread completes before completing main thread.
+    t1.join()
+    t2.join()
+    t3.join()
+    print("thread_1 ended\n")

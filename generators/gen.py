@@ -35,10 +35,13 @@ print(next(finite)) # 3 END!
 
 
 # Generator comprehensions use parenthesis instead of square brackets like list comprehensions
+import sys
 
 num_list = [1,2,3]
-lc = [num**2 for num in num_list]
+lc = [num**2 for num in range(20)]
 print(lc)
+print(sys.getsizeof(lc)) # output in bytes
 
-gc = (num**2 for num in num_list)
+gc = (num**2 for num in range(20))
 print(gc)
+print(sys.getsizeof(gc)) # output in bytes

@@ -9,6 +9,7 @@ import threading
 
 number_of_threads = 0
 
+
 def my_func(name):
     global number_of_threads
     number_of_threads += 1
@@ -17,6 +18,7 @@ def my_func(name):
     time.sleep(random.randrange(3, 7, 2))
     print(f"thread_{thread_id} ended\n")
     number_of_threads -= 1
+
 
 if __name__ == "__main__":
     number_of_threads += 1

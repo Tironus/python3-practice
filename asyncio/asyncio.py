@@ -4,7 +4,6 @@ import asyncio
 import aiohttp
 
 
-
 async def worker(name, n, session):
     print(f'worker-{name}')
     url = f'https://qrng.anu.edu.au/API/jsonI.php?length={n}&type=uint16'

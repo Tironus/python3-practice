@@ -1,52 +1,21 @@
-import time
-import json
-import asyncio
 import pyautogui
+from PIL import ImageGrab
 
-
-async def worker():
-    combat = pyautogui.locateOnScreen('combat.png', confidence=0.9, region=(1213, 652, 900, 80))
-    if combat is None:
-        print('looking for prey')
-    else:
-        print('begin the hunt')
-        inquisition = pyautogui.locateOnScreen('inquisition.png', confidence=0.9, region=(1213, 652, 900, 80))
-        if inquisition is None:
-            print('cast inquisition!')
-            pyautogui.hotkey('ctrl', '5')
-            pyautogui.hotkey('2')
+try:
+    while True:
+        # combat starts
+        combat = ImageGrab.grab(bbox=(1250, 675, 1251, 676))
+        if combat.getpixel((0,0)) == (255,255,255,255):
+            # begin combat
+            print('FIGHT!')
+            inquisition = ImageGrab.grab(bbox=(1315,675,1316,676))
+            if inquisition.getpixel((0,0)) == (255,255,255,255):
+                print('inquisition running')
+            else:
+                print('cast inquisition')
+                pyautogui.hotkey('2')
         else:
-            print('holy powa!')
-
-        time.sleep(0.5)
-
-        avenge = pyautogui.locateOnScreen('avenge.png', confidence=0.9, region=(1213, 652, 900, 80))
-        if avenge is None:
-            print('vengeance is coming')
-        else:
-            print('vengeance is mine!')
-            pyautogui.hotkey('7')
-
-        holy_power = pyautogui.locateOnScreen('holy_power.png', confidence=0.9, region=(1213, 652, 900, 80))
-        if holy_power is None:
-            print('light bless me with strength')
-            pyautogui.hotkey('4')
-            pyautogui.hotkey('ctrl', '4')
-            pyautogui.hotkey('1')
-            pyautogui.hotkey('ctrl', '5')
-        else:
-            print('lights justice!')
-            pyautogui.hotkey('ctrl', '2')
-
-async def main():
-    try:
-        while True:
-            await asyncio.gather(worker())
-    except KeyboardInterrupt:
-        print('hunting has ended')
-
-if __name__ == "__main__":
-    start_time = time.perf_counter()
-    asyncio.run(main())
-    elapsed = time.perf_counter() - start_time
-    print(f'elapased time {elapsed}')
+            # no combat
+            print('looking for prey...')
+except KeyboardInterrupt:
+    print('hunting has ended')

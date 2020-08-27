@@ -44,20 +44,24 @@ try:
                     print('cast inquisition')
                     pyautogui.hotkey('2')
                 print('cast templars verdict')
+
                 pyautogui.hotkey('3')
                 pyautogui.hotkey('ctrl', '2')
+
             else:
                 if combat.getpixel((63,0)) == (255, 255, 255, 255):
                     print('inquisition running')
                 else:
                     print('cast inquisition')
                     pyautogui.hotkey('2')
+
                 print('light grant me power!')
                 pyautogui.hotkey('3')
                 pyautogui.hotkey('ctrl', '4')
                 pyautogui.hotkey('ctrl', '5')
                 pyautogui.hotkey('4')
                 pyautogui.hotkey('1')
+
             e = time.perf_counter() - s
             print(f'time elapsed: {e}')
         else:

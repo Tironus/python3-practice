@@ -1,4 +1,5 @@
 from configCommander import configCommander
+from commandGenerator import commandGenerator
 
 payload = {
     "device": {
@@ -14,11 +15,22 @@ payload = {
                     "ipv4_address": "192.168.52.43",
                     "ipv4_prefix_len": "24",
                     "allow_access": [
-                        "ping",
-                        "ssh",
-                        "http",
-                        "https",
-                        "snmp"
+                        " ping",
+                        " ssh",
+                        " http",
+                        " https",
+                        " snmp"
+                    ]
+                },
+                {
+                    "id": "port3",
+                    "ipv4_address": "192.168.72.43",
+                    "ipv4_prefix_len": "24",
+                    "allow_access": [
+                        " ping",
+                        " ssh",
+                        " http",
+                        " snmp"
                     ]
                 }
             ],
@@ -35,18 +47,16 @@ payload = {
 }
 
 c = configCommander(payload)
-ret = c.find_validation()
-print(ret)
+ret = c.runConfig()
 
 
-
-#print('COMMAND RESULTS:')
-#print('=================================')
-#print('=================================\n')
-#for result in d.cmd_results:
-#    print(f'command: {result}')
-#    print(f'command submitted: {d.cmd_results[result]["submit_config_result"]}')
-#    print(f'command result: {d.cmd_results[result]["device_accepted_result"]}\n')
-#    print(f'{d.cmd_results[result]["device_output"]}')
-#    print('=================================')
-#    print('=================================\n')
+print('COMMAND RESULTS:')
+print('=================================')
+print('=================================\n')
+for result in ret:
+    print(f'command: {result}')
+    print(f'command submitted: {ret[result]["submit_config_result"]}')
+    print(f'command result: {ret[result]["device_accepted_result"]}\n')
+    print(f'{ret[result]["device_output"]}')
+    print('=================================')
+    print('=================================\n')

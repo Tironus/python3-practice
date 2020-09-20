@@ -1,0 +1,8 @@
+config system interface
+edit {{ params.id }}
+set ip {{ params.ipv4_address }}/{{ params.ipv4_prefix_len }}
+set allowaccess
+{%- for proto in params.allow_access -%}
+{{ proto }}
+{%- endfor %}
+end

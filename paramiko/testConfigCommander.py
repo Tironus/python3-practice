@@ -70,10 +70,11 @@ payload = {
 }
 
 c = configCommander(payload)
-ret = c.runConfig()
+ret, status, msg = c.runConfig()
 
 
-print('COMMAND RESULTS:')
+print(f'COMMAND RESULTS: {status}')
+print(f'msg: {msg}')
 print('=================================')
 print('=================================\n')
 for result in ret:

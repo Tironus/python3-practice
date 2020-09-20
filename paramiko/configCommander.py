@@ -32,11 +32,11 @@ class configCommander():
         cmds = cg.generateCommands()
         d.runCommands(cmds)
         for result in d.cmd_results:
-            _err_msg = "new configuration transaction failed, config backed out"
             if d.cmd_results[result]['submit_config_result'] != 'success' or d.cmd_results[result]['device_accepted_result'] != 'success':
                 cg.update_config_type('backout')
                 cmds = cg.generateCommands()
                 d.runCommands(cmds)
+                _err_msg = "new configuration transaction failed, config backed out"
                 return d.cmd_results, "failed", _err_msg
         return d.cmd_results, "success", None
 

@@ -28,8 +28,6 @@ class configCommander():
             self.new_config['device']['password'],
             validation_regex)
 
-
-        #cmd_list = ['config system interface\nedit port2\nunset ip\nunset allowaccess\nend', 'show system interface port2']
         cg = commandGenerator(self.new_config, 'configure')
         cmds = cg.generateCommands()
         d.runCommands(cmds)

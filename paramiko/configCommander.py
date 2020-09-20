@@ -40,7 +40,6 @@ class configCommander():
                 cmds = cg.generateCommands()
                 d.runCommands(cmds)
                 print('backout complete')
-                print(d.cmd_results)
         return d.cmd_results
 
 

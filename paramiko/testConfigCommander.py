@@ -32,6 +32,14 @@ payload = {
                         " http",
                         " snmp"
                     ]
+                },
+                {
+                    "id": "port4",
+                    "ipv4_address": "192.168.74.43",
+                    "ipv4_prefix_len": "24",
+                    "allow_access": [
+                        " ping"
+                    ]
                 }
             ],
             "static_route": [
@@ -39,7 +47,22 @@ payload = {
                     "id": "100",
                     "dst_ip": "10.10.10.0",
                     "dst_prefix_len": "24",
-                    "device": "port2"
+                    "device": "port2",
+                    "gateway": "192.168.52.44"
+                },
+                {
+                    "id": "101",
+                    "dst_ip": "10.10.11.0",
+                    "dst_prefix_len": "24",
+                    "device": "port2",
+                    "gateway": "192.168.52.44"
+                },
+                {
+                    "id": "102",
+                    "dst_ip": "10.10.12.0",
+                    "dst_prefix_len": "24",
+                    "device": "port2",
+                    "gateway": "192.168.52.44"
                 }
             ]
         }

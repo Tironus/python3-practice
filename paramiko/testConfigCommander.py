@@ -35,7 +35,7 @@ payload = {
                 },
                 {
                     "id": "port4",
-                    "ipv4_address": "192.168.74.43",
+                    "ipv4_address": "192.168.74.0",
                     "ipv4_prefix_len": "24",
                     "allow_access": [
                         " ping"

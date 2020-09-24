@@ -11,12 +11,12 @@ app = FastAPI()
 
 @app.post("/config_interface", response_model=models.ConfigResponse)
 async def post_config(config_data: models.ConfigDeviceInterface):
-    c = configCommander(payload)
+    c = configCommander(config_data)
     results, status, msg = c.runConfig()
     return results
 
 @app.post("/config_static_routes", response_model=models.ConfigResponse)
-async def post_config(config_data: models.ConfigRoutes):
-    c = configCommander(payload)
+async def post_config(config_data: models.ConfigDeviceRoute):
+    c = configCommander(config_data)
     results, status, msg = c.runConfig()
     return results

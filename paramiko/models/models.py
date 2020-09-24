@@ -10,10 +10,10 @@ class AllowAccess(enum.Enum):
     snmp = '4'
 
 class DevicePorts(enum.Enum):
-    port1 = '1'
-    port2 = '2'
-    port3 = '3'
-    port4 = '4'
+    port1 = 'port1'
+    port2 = 'port2'
+    port3 = 'port3'
+    port4 = 'port4'
 
 
 class InterfaceValues(BaseModel):
@@ -26,11 +26,10 @@ class StaticRouteValues(BaseModel):
     id: str
     dst_ip: str
     dst_prefix_len: str
-    device: DevicePorts
+    device: List[DevicePorts]
     gateway: str
 
-class ConfigInterface(BaseModel):
-    device: str
+class ConfigInteface(BaseModel):
     hostname: str
     username: str
     password: str
@@ -39,13 +38,18 @@ class ConfigInterface(BaseModel):
     configuration: Optional[InterfaceValues]
 
 class ConfigRoutes(BaseModel):
-    device: str
     hostname: str
     username: str
     password: str
     device_type: str
     firmware_version: str
     configuration: Optional[StaticRouteValues]
+
+class ConfigDeviceInterface(BaseModel):
+    device: Optional[ConfigInteface]
+
+class ConfigDeviceRoute(BaseModel):
+    device: Optional[ConfigRoutes]
 
 class ConfigResponse(BaseModel):
     restults: List

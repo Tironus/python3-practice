@@ -10,7 +10,7 @@ from fastapi import FastAPI
 app = FastAPI()
 
 @app.post("/config_interface", response_model=models.ConfigResponse)
-async def post_config(config_data: models.ConfigInterface):
+async def post_config(config_data: models.ConfigDeviceInterface):
     c = configCommander(payload)
     results, status, msg = c.runConfig()
     return results

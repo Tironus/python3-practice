@@ -69,6 +69,25 @@ payload = {
     }
 }
 
+test_api = {
+  "device": {
+    "hostname": "172.16.233.130",
+    "username": "admin",
+    "password": "admin",
+    "device_type": "fortigate",
+    "firmware_version": "5.6.4",
+    "configuration": {
+      "id": "500",
+      "dst_ip": "50.50.50.0",
+      "dst_prefix_len": "24",
+      "device": [
+        "port2"
+      ],
+      "gateway": "192.168.52.44"
+    }
+  }
+}
+
 c = configCommander(payload)
 ret, status, msg = c.runConfig()
 

@@ -8,8 +8,8 @@ class commandGenerator():
         self.config_type = config_type
         self.commands = []
 
-    def update_config_type(self, type):
-        self.config_type = type
+    def update_config_type(self, config_type):
+        self.config_type = config_type
 
     def config_fortigate(self, template):
         params = {}

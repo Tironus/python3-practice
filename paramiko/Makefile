@@ -1,8 +1,8 @@
 install:
-    python3 -m venv ~/.configCommander
-    source ~/.configCommander/bin/activate
-    pip install --upgrade pip
-    pip install -r requirements.txt
+    python3 -m venv ~/.configCommander && \
+    source ~/.configCommander/bin/activate && \
+    pip install --upgrade pip && \
+    pip install -r requirements.txt &&
 
 test:
     python -m pytest -vv --cov=configCommander testConfigCommander.py

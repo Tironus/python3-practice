@@ -75,4 +75,4 @@ payload = {
 def test_update_config_type():
     testGenerator = commandGenerator(payload, 'configure')
     testGenerator.update_config_type('test')
-    assert "configure" in testGenerator.config_type
+    assert "test" in testGenerator.config_type

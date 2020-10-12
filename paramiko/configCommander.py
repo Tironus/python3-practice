@@ -8,8 +8,7 @@ class configCommander():
         self.new_config = config
 
     def find_validation(self):
-        cwd = os.getcwd()
-        with open(rf'/Users/Tony/GIT/python3-practice/paramiko/device_yaml/device_yaml.yaml') as file:
+        with open(r'/Users/Tony/GIT/python3-practice/paramiko/device_yaml/device_yaml.yaml') as file:
             device_list = yaml.load(file, Loader=yaml.FullLoader)
 
         for device in device_list:

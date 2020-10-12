@@ -1,6 +1,10 @@
-{%- for intf in params.interface -%}
+config vdom
+edit root
+{% for intf in params.interface -%}
 config system interface
 edit {{ intf.id }}
+set vdom root
+set mode static
 set ip {{ intf.ipv4_address }}/{{ intf.ipv4_prefix_len }}
 set allowaccess
 {%- for proto in intf.allow_access -%}
@@ -16,3 +20,4 @@ set device {{ route.device }}
 set gateway {{ route.gateway }}
 end
 {% endfor %}
+end

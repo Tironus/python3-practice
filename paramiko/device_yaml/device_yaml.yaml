@@ -1,5 +1,5 @@
 ---
 - device_type: "fortigate"
-  regex_validation: ".*(error|fail|illegal|MUST be set)"
+  regex_validation: ".*(error|fail|illegal|MUST be set|Can't)"
   username: "admin"
   password: "admin"

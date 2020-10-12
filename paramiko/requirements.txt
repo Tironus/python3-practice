@@ -1,0 +1,10 @@
+pylint
+click
+pytest
+pytest-cov
+black
+jinja2
+os
+yaml
+re
+paramiko

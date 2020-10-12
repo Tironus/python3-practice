@@ -1,4 +1,6 @@
-{%- for intf in params.interface -%}
+config vdom
+edit root
+{% for intf in params.interface -%}
 config system interface
 edit {{ intf.id }}
 unset ip
@@ -10,3 +12,4 @@ config router static
 delete {{ route.id }}
 end
 {% endfor %}
+end

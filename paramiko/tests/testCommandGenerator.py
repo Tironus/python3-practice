@@ -1,5 +1,5 @@
-from configCommander import configCommander
 from commandGenerator import commandGenerator
+from commandGenerator import update_config_type
 
 payload = {
     "device": {
@@ -69,37 +69,7 @@ payload = {
     }
 }
 
-test_api = {
-  "device": {
-    "hostname": "192.168.20.8",
-    "username": "admin",
-    "password": "admin",
-    "device_type": "fortigate",
-    "firmware_version": "5.6.4",
-    "configuration": {
-      "id": "500",
-      "dst_ip": "50.50.50.0",
-      "dst_prefix_len": "24",
-      "device": [
-        "port2"
-      ],
-      "gateway": "192.168.52.44"
-    }
-  }
-}
-
-c = configCommander(payload)
-ret, status, msg = c.runConfig()
-
-
-print(f'COMMAND RESULTS: {status}')
-print(f'msg: {msg}')
-print('=================================')
-print('=================================\n')
-for result in ret:
-    print(f'command: {result}')
-    print(f'command submitted: {ret[result]["submit_config_result"]}')
-    print(f'command result: {ret[result]["device_accepted_result"]}\n')
-    print(f'{ret[result]["device_output"]}')
-    print('=================================')
-    print('=================================\n')
+def test_update_config_type():
+    testGenerator = commandGenerator(payload, 'configure')
+    testGenerator.update_config_type('test')
+    assert "test" in testGenerator.config_type

@@ -49,9 +49,11 @@ class DeviceConfig():
             stdin, stdout, stderr = ssh_ctx.exec_command(cmd)
             stdin = stdin.channel.makefile_stdin()
             stderr = stderr.channel.makefile_stderr()
+            stdout = stdout.channel.makefile_stdout()
 
             stdin_list = [line for line in stdin.readlines()]
             stderr_list = [line for line in stderr.readlines()]
+            stdout_list = [line for line in stdout.readlines()]
 
             if len(stdin_list) > 0:
                 device.cmd_status(cmd, "success", stdin_list, self.cmd_validation_regex)
@@ -60,5 +62,6 @@ class DeviceConfig():
             if len(stderr_list) > 0:
                 device.cmd_status(cmd, "error", stderr_list, self.cmd_validation_regex)
                 print(stderr_list)
+                print(stdout_list)
 
         self.cmd_results = device.commands

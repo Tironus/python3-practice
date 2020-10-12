@@ -37,6 +37,8 @@ class commandGenerator():
         else:
             print(f'invalid config type: {self.config_type}')
 
+        print(template_path)
+        print(template_name)
         file_loader = FileSystemLoader(template_path)
         env = Environment(loader=file_loader)
         template = env.get_template(template_name)

@@ -1,7 +1,6 @@
 from deviceCommander import DeviceConfig
 from commandGenerator import commandGenerator
 import yaml
-import os
 
 class configCommander():
     def __init__(self, config):

@@ -1,5 +1,4 @@
 from commandGenerator import commandGenerator
-from commandGenerator import update_config_type
 
 payload = {
     "device": {

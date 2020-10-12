@@ -3,6 +3,6 @@ click
 pytest
 pytest-cov
 black
-Jinja2
-yaml
+jinja2
+pyyaml
 paramiko

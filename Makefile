@@ -3,7 +3,7 @@ install:
 	pip install -r requirements.txt
 
 test:
-	python -m pytest -vv --cov=paramiko/configCommander paramiko/tests/testCommandGenerator.py
+	python -m pytest -vv --cov=paramiko/testCommandGenerator paramiko/tests/testCommandGenerator.py
 
 lint:
 	pylint --disable=R,C,E1120 paramiko/commandGenerator.py

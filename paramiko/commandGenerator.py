@@ -27,12 +27,11 @@ class commandGenerator():
         self.commands = command_list
 
     def generateCommands(self):
-        home_env = os.getenv("HOME")
         if self.config_type == 'configure':
-            template_path = f"{home_env}/python3-practice/paramiko/command_templates/config"
+            template_path = "/home/runner/work/python3-practice/python3-practice/paramiko/command_templates/config"
             template_name = f"{self.config['device']['device_type']}_commands.txt"
         elif self.config_type == 'backout':
-            template_path = f"{home_env}/python3-practice/paramiko/command_templates/backout"
+            template_path = "/home/runner/work/python3-practice/python3-practice/paramiko/command_templates/backout"
             template_name = f"{self.config['device']['device_type']}_backout_commands.txt"
         else:
             print(f'invalid config type: {self.config_type}')

@@ -80,5 +80,4 @@ def test_update_config_type():
 def test_generate_commands():
     testGenerator = commandGenerator(payload, 'configure')
     results = testGenerator.generateCommands()
-    print(results)
-    assert results is not []
+    assert results is []
